@@ -7,6 +7,7 @@ async function getAllDepartments() {
     const client = await pool.connect();
     try {
         const result = await client.query('SELECT * FROM department'); // Correct table name here
+        console.log(result)
         return result.rows;
     } finally {
         client.release();

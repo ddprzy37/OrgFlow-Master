@@ -38,6 +38,7 @@ async function performDatabaseOperations() {
 // Function to display all departments
 async function viewAllDepartments() {
     const departments = await getAllDepartments();
+    console.log(departments);
     const table = departments.map(({ id, name }) => ({ ID: id, Name: name }));
     console.table(table);
     await mainMenu();
@@ -275,9 +276,10 @@ async function mainMenu() {
 async function start() {
     console.log('Welcome to Your Application!');
     await executeSchemaScript(); // Execute schema creation script
-    await performDatabaseOperations();
     await mainMenu(); // Display main menu and handle user input
+    await performDatabaseOperations(); // Query tables after data insertion
 }
+
 
 // Start the application
 start();
